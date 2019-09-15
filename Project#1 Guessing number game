@@ -1,0 +1,46 @@
+import random as rd
+ran_num = rd.randint(1,101)
+print(ran_num)
+print('Welcom to Guessing Game')
+print('----------Rule-----------')
+print("1. If a player's guess is less than 1 or greater than 100, say " + '"OUT OF BOUNDS"')
+print("2. On a player's first turn, if their guess is")
+print("    within 10 of the number, return " + "WARM!")
+print("    further than 10 away from the number, return" + "COLD!")
+print("3. On all subsequent turns, if a guess is")
+print("    closer to the number than the previous guess return" + "WARMER!")
+print("    farther from the number than the previous guess, return" + "COLDER!")
+
+guess_num = []
+x = 0
+
+while x < 1 :
+    guess_num.append(int(input('Guess the right answer: ')))
+    if guess_num[-1] < 1 or guess_num[-1] > 100:
+        print("Answer can't be less than 1 and more than 100")
+    elif abs(guess_num[-1] - ran_num) > 10 and guess_num[-1] != ran_num:
+        print(guess_num[-1] - ran_num)
+        print("COLD!")
+        break
+    elif abs(guess_num[-1] - ran_num) <= 10 and guess_num[-1] != ran_num:
+        print(guess_num[-1] - ran_num)
+        print("WARM!")
+        break
+    elif guess_num[-1] == ran_num:
+        print(guess_num[-1])
+        print("That's correct!! The answer is {}".format(ran_num))
+        break
+while x < 1:
+    guess_num.append(int(input('Guess the right answer: ')))
+    if guess_num[-2] < 1 or guess_num[-2] > 100:
+        print("Answer can't be less than 1 and more than 100")
+    elif abs(guess_num[-1] - ran_num) > abs(guess_num[-2] - ran_num) and guess_num[-1] != ran_num:
+        print(guess_num[-1])
+        print("COLDER!")
+    elif abs(guess_num[-1] - ran_num) < abs(guess_num[-2] - ran_num) and guess_num[-1] != ran_num:
+        print(guess_num[-1])
+        print("WARMER!")
+    elif guess_num[-1] == ran_num:
+        print(guess_num[-1])
+        print("That's correct!! The answer is {}".format(ran_num))
+        break
